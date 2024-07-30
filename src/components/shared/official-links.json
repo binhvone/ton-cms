@@ -1,13 +1,14 @@
 {
   "collectionName": "components_shared_official_links",
   "info": {
-    "displayName": "officialLinks"
+    "displayName": "officialLinks",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "link": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "shared.link"
     },
     "type": {

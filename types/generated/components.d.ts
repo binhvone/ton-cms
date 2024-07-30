@@ -43,9 +43,10 @@ export interface SharedOfficialLinks extends Schema.Component {
   collectionName: 'components_shared_official_links';
   info: {
     displayName: 'officialLinks';
+    description: '';
   };
   attributes: {
-    link: Attribute.Component<'shared.link', true>;
+    link: Attribute.Component<'shared.link'>;
     type: Attribute.Enumeration<['youtobe', 'twitter']>;
   };
 }
