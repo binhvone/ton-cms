@@ -878,6 +878,30 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    platforms: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    languages: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Telegram: Attribute.Component<'shared.link', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    officialLinks: Attribute.Component<'shared.link', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1144,7 +1168,9 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    blocks: Attribute.DynamicZone<['blocks.cta', 'shared.seo']> &
+    blocks: Attribute.DynamicZone<
+      ['blocks.cta', 'shared.seo', 'global.footer']
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1163,6 +1189,36 @@ export interface ApiPagePage extends Schema.CollectionType {
       'api::page.page'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiPlatformPlatform extends Schema.CollectionType {
+  collectionName: 'platforms';
+  info: {
+    singularName: 'platform';
+    pluralName: 'platforms';
+    displayName: 'Platform';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::platform.platform',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::platform.platform',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1398,6 +1454,46 @@ export interface ApiTagTag extends Schema.CollectionType {
   };
 }
 
+export interface ApiTokenToken extends Schema.CollectionType {
+  collectionName: 'tokens';
+  info: {
+    singularName: 'token';
+    pluralName: 'tokens';
+    displayName: 'Token';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    symbol: Attribute.String;
+    rating: Attribute.Float;
+    marketCap: Attribute.Float;
+    totalSupply: Attribute.BigInteger;
+    holder: Attribute.BigInteger;
+    volume: Attribute.BigInteger;
+    price: Attribute.Float;
+    address: Attribute.String;
+    description: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::token.token',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::token.token',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1421,10 +1517,12 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;
+      'api::platform.platform': ApiPlatformPlatform;
       'api::rating.rating': ApiRatingRating;
       'api::review.review': ApiReviewReview;
       'api::statistic.statistic': ApiStatisticStatistic;
       'api::tag.tag': ApiTagTag;
+      'api::token.token': ApiTokenToken;
     }
   }
 }

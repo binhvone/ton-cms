@@ -43,11 +43,13 @@ export interface SharedLink extends Schema.Component {
   collectionName: 'components_shared_links';
   info: {
     displayName: 'Link';
+    description: '';
   };
   attributes: {
     href: Attribute.String;
     label: Attribute.String;
     target: Attribute.Enumeration<['_blank']>;
+    type: Attribute.Enumeration<['twitter', 'youtube']>;
   };
 }
 

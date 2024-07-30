@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tokens",
+  "info": {
+    "singularName": "token",
+    "pluralName": "tokens",
+    "displayName": "Token",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "float"
+    },
+    "marketCap": {
+      "type": "float"
+    },
+    "totalSupply": {
+      "type": "biginteger"
+    },
+    "holder": {
+      "type": "biginteger"
+    },
+    "volume": {
+      "type": "biginteger"
+    },
+    "price": {
+      "type": "float"
+    },
+    "address": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
