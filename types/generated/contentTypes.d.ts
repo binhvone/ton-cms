@@ -896,7 +896,7 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    officialLinks: Attribute.Component<'shared.link', true> &
+    officialLinks: Attribute.Component<'shared.official-links', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

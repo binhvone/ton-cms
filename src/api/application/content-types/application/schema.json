@@ -134,6 +134,7 @@
       "component": "shared.link"
     },
     "officialLinks": {
+      "displayName": "officialLinks",
       "type": "component",
       "repeatable": true,
       "pluginOptions": {
@@ -141,7 +142,7 @@
           "localized": true
         }
       },
-      "component": "shared.link"
+      "component": "shared.official-links"
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_official_links",
+  "info": {
+    "displayName": "officialLinks"
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "youtobe",
+        "twitter"
+      ]
+    }
+  }
+}

@@ -39,6 +39,17 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SharedOfficialLinks extends Schema.Component {
+  collectionName: 'components_shared_official_links';
+  info: {
+    displayName: 'officialLinks';
+  };
+  attributes: {
+    link: Attribute.Component<'shared.link', true>;
+    type: Attribute.Enumeration<['youtobe', 'twitter']>;
+  };
+}
+
 export interface SharedLink extends Schema.Component {
   collectionName: 'components_shared_links';
   info: {
@@ -49,7 +60,6 @@ export interface SharedLink extends Schema.Component {
     href: Attribute.String;
     label: Attribute.String;
     target: Attribute.Enumeration<['_blank']>;
-    type: Attribute.Enumeration<['twitter', 'youtube']>;
   };
 }
 
@@ -119,6 +129,7 @@ declare module '@strapi/types' {
       'shared.test': SharedTest;
       'shared.social-network': SharedSocialNetwork;
       'shared.seo': SharedSeo;
+      'shared.official-links': SharedOfficialLinks;
       'shared.link': SharedLink;
       'shared.footer-column': SharedFooterColumn;
       'home-page.banner': HomePageBanner;

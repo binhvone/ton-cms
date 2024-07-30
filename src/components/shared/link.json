@@ -17,13 +17,6 @@
       "enum": [
         "_blank"
       ]
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "twitter",
-        "youtube"
-      ]
     }
   }
 }
