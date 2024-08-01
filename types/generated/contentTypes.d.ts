@@ -798,13 +798,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAdvisementAdvisement extends Schema.CollectionType {
-  collectionName: 'advisements';
+export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
+  collectionName: 'advertisements';
   info: {
-    singularName: 'advisement';
-    pluralName: 'advisements';
-    displayName: 'Advertisements';
-    description: '';
+    singularName: 'advertisement';
+    pluralName: 'advertisements';
+    displayName: 'Advertisement';
   };
   options: {
     draftAndPublish: true;
@@ -814,7 +813,7 @@ export interface ApiAdvisementAdvisement extends Schema.CollectionType {
     description: Attribute.Text;
     featuredImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     application: Attribute.Relation<
-      'api::advisement.advisement',
+      'api::advertisement.advertisement',
       'oneToOne',
       'api::application.application'
     >;
@@ -822,13 +821,13 @@ export interface ApiAdvisementAdvisement extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::advisement.advisement',
+      'api::advertisement.advertisement',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::advisement.advisement',
+      'api::advertisement.advertisement',
       'oneToOne',
       'admin::user'
     > &
@@ -1508,7 +1507,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::advisement.advisement': ApiAdvisementAdvisement;
+      'api::advertisement.advertisement': ApiAdvertisementAdvertisement;
       'api::application.application': ApiApplicationApplication;
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;

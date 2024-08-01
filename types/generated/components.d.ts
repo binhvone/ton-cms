@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface HomePageBanner extends Schema.Component {
-  collectionName: 'components_home_page_banners';
-  info: {
-    displayName: 'Banner';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Attribute.Component<'shared.link'>;
-  };
-}
-
 export interface SharedTest extends Schema.Component {
   collectionName: 'components_shared_tests';
   info: {
@@ -90,6 +77,19 @@ export interface SharedFooterColumn extends Schema.Component {
   };
 }
 
+export interface HomePageBanner extends Schema.Component {
+  collectionName: 'components_home_page_banners';
+  info: {
+    displayName: 'Banner';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.Component<'shared.link'>;
+  };
+}
+
 export interface GlobalNavigation extends Schema.Component {
   collectionName: 'components_global_navigations';
   info: {
@@ -127,13 +127,13 @@ export interface BlocksCta extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'home-page.banner': HomePageBanner;
       'shared.test': SharedTest;
       'shared.social-network': SharedSocialNetwork;
       'shared.seo': SharedSeo;
       'shared.official-links': SharedOfficialLinks;
       'shared.link': SharedLink;
       'shared.footer-column': SharedFooterColumn;
+      'home-page.banner': HomePageBanner;
       'global.navigation': GlobalNavigation;
       'global.footer': GlobalFooter;
       'blocks.cta': BlocksCta;

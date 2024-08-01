@@ -4,8 +4,7 @@
   "info": {
     "singularName": "advertisement",
     "pluralName": "advertisements",
-    "displayName": "Advertisements",
-    "description": ""
+    "displayName": "Advertisement"
   },
   "options": {
     "draftAndPublish": true
@@ -21,15 +20,14 @@
       "type": "text"
     },
     "featuredImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "type": "media",
+      "multiple": false
     },
     "application": {
       "type": "relation",
