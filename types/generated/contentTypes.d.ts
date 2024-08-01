@@ -798,23 +798,44 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAdvisementAdvisement extends Schema.CollectionType {
-  collectionName: 'advisements';
+export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
+  collectionName: 'advertisements';
   info: {
-    singularName: 'advisement';
-    pluralName: 'advisements';
-    displayName: 'Advertisements';
-    description: '';
+    singularName: 'advertisement';
+    pluralName: 'advertisements';
+    displayName: 'Advertisement';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    description: Attribute.Text;
-    featuredImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    featuredImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     application: Attribute.Relation<
-      'api::advisement.advisement',
+      'api::advertisement.advertisement',
       'oneToOne',
       'api::application.application'
     >;
@@ -822,17 +843,23 @@ export interface ApiAdvisementAdvisement extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::advisement.advisement',
+      'api::advertisement.advertisement',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::advisement.advisement',
+      'api::advertisement.advertisement',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::advertisement.advertisement',
+      'oneToMany',
+      'api::advertisement.advertisement'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1508,7 +1535,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::advisement.advisement': ApiAdvisementAdvisement;
+      'api::advertisement.advertisement': ApiAdvertisementAdvertisement;
       'api::application.application': ApiApplicationApplication;
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
