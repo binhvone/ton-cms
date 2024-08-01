@@ -803,7 +803,8 @@ export interface ApiAdvisementAdvisement extends Schema.CollectionType {
   info: {
     singularName: 'advisement';
     pluralName: 'advisements';
-    displayName: 'Advisement';
+    displayName: 'Advertisements';
+    description: '';
   };
   options: {
     draftAndPublish: true;
