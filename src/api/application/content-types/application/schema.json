@@ -107,14 +107,6 @@
       },
       "type": "string"
     },
-    "platforms": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "languages": {
       "pluginOptions": {
         "i18n": {
@@ -143,6 +135,11 @@
         }
       },
       "component": "shared.official-links"
+    },
+    "platforms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::platform.platform"
     }
   }
 }
