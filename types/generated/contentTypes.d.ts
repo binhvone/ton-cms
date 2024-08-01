@@ -936,6 +936,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   pluginOptions: {
     i18n: {
@@ -970,7 +971,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
         };
       }>;
     tag: Attribute.Relation<'api::blog.blog', 'manyToOne', 'api::tag.tag'>;
-    news_category: Attribute.Relation<
+    newsCategory: Attribute.Relation<
       'api::blog.blog',
       'manyToOne',
       'api::news-category.news-category'
@@ -983,10 +984,8 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'>;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'>;
     localizations: Attribute.Relation<
       'api::blog.blog',
       'oneToMany',

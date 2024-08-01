@@ -8,7 +8,8 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "populateCreatorFields": true
   },
   "pluginOptions": {
     "i18n": {
@@ -64,7 +65,7 @@
       "target": "api::tag.tag",
       "inversedBy": "blogs"
     },
-    "news_category": {
+    "newsCategory": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::news-category.news-category",
