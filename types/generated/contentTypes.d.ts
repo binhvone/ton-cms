@@ -798,6 +798,43 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAdvisementAdvisement extends Schema.CollectionType {
+  collectionName: 'advisements';
+  info: {
+    singularName: 'advisement';
+    pluralName: 'advisements';
+    displayName: 'Advisement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Text;
+    featuredImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    application: Attribute.Relation<
+      'api::advisement.advisement',
+      'oneToOne',
+      'api::application.application'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::advisement.advisement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::advisement.advisement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiApplicationApplication extends Schema.CollectionType {
   collectionName: 'applications';
   info: {
@@ -1470,6 +1507,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::advisement.advisement': ApiAdvisementAdvisement;
       'api::application.application': ApiApplicationApplication;
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;

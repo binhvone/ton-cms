@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "advisements",
+  "info": {
+    "singularName": "advisement",
+    "pluralName": "advisements",
+    "displayName": "Advisement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "featuredImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "application": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::application.application"
+    }
+  }
+}
