@@ -803,37 +803,16 @@ export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
   info: {
     singularName: 'advertisement';
     pluralName: 'advertisements';
-    displayName: 'Advertisement';
+    displayName: 'Advertisements';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
   attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    featuredImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Text;
+    featuredImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     application: Attribute.Relation<
       'api::advertisement.advertisement',
       'oneToOne',
@@ -854,12 +833,6 @@ export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::advertisement.advertisement',
-      'oneToMany',
-      'api::advertisement.advertisement'
-    >;
-    locale: Attribute.String;
   };
 }
 

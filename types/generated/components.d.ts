@@ -77,19 +77,6 @@ export interface SharedFooterColumn extends Schema.Component {
   };
 }
 
-export interface BlocksCta extends Schema.Component {
-  collectionName: 'components_blocks_ctas';
-  info: {
-    displayName: 'Cta';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    subTitle: Attribute.Text;
-    buttons: Attribute.Component<'shared.test', true>;
-  };
-}
-
 export interface HomePageBanner extends Schema.Component {
   collectionName: 'components_home_page_banners';
   info: {
@@ -124,6 +111,19 @@ export interface GlobalFooter extends Schema.Component {
   };
 }
 
+export interface BlocksCta extends Schema.Component {
+  collectionName: 'components_blocks_ctas';
+  info: {
+    displayName: 'Cta';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    subTitle: Attribute.Text;
+    buttons: Attribute.Component<'shared.test', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -133,10 +133,10 @@ declare module '@strapi/types' {
       'shared.official-links': SharedOfficialLinks;
       'shared.link': SharedLink;
       'shared.footer-column': SharedFooterColumn;
-      'blocks.cta': BlocksCta;
       'home-page.banner': HomePageBanner;
       'global.navigation': GlobalNavigation;
       'global.footer': GlobalFooter;
+      'blocks.cta': BlocksCta;
     }
   }
 }
