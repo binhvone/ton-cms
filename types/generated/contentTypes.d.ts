@@ -1121,6 +1121,39 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCommunityCommunity extends Schema.CollectionType {
+  collectionName: 'communities';
+  info: {
+    singularName: 'community';
+    pluralName: 'communities';
+    displayName: 'Community';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Text;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    url: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::community.community',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::community.community',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNewsCategoryNewsCategory extends Schema.CollectionType {
   collectionName: 'news_categories';
   info: {
@@ -1512,6 +1545,7 @@ declare module '@strapi/types' {
       'api::application.application': ApiApplicationApplication;
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
+      'api::community.community': ApiCommunityCommunity;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;
       'api::platform.platform': ApiPlatformPlatform;
