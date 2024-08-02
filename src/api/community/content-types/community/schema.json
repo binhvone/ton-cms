@@ -4,7 +4,8 @@
   "info": {
     "singularName": "community",
     "pluralName": "communities",
-    "displayName": "Community"
+    "displayName": "Community",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,16 +21,20 @@
       "type": "text"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "url": {
+      "type": "string"
+    },
+    "titleButton": {
       "type": "string"
     }
   }

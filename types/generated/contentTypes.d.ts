@@ -1127,6 +1127,7 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
     singularName: 'community';
     pluralName: 'communities';
     displayName: 'Community';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1136,6 +1137,7 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
     description: Attribute.Text;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     url: Attribute.String;
+    titleButton: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
