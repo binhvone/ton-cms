@@ -23,6 +23,7 @@ export interface SharedSocialNetwork extends Schema.Component {
   attributes: {
     url: Attribute.String;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Attribute.String;
   };
 }
 
