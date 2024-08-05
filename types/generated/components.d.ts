@@ -22,7 +22,7 @@ export interface SharedSocialNetwork extends Schema.Component {
   };
   attributes: {
     url: Attribute.String;
-    Logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -79,19 +79,6 @@ export interface SharedFooterColumn extends Schema.Component {
   };
 }
 
-export interface HomePageBanner extends Schema.Component {
-  collectionName: 'components_home_page_banners';
-  info: {
-    displayName: 'Banner';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Attribute.Component<'shared.link'>;
-  };
-}
-
 export interface GlobalNavigation extends Schema.Component {
   collectionName: 'components_global_navigations';
   info: {
@@ -110,7 +97,20 @@ export interface GlobalFooter extends Schema.Component {
   };
   attributes: {
     label: Attribute.String;
-    social: Attribute.Component<'shared.social-network', true>;
+    socials: Attribute.Component<'shared.social-network', true>;
+  };
+}
+
+export interface HomePageBanner extends Schema.Component {
+  collectionName: 'components_home_page_banners';
+  info: {
+    displayName: 'Banner';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.Component<'shared.link'>;
   };
 }
 
@@ -136,9 +136,9 @@ declare module '@strapi/types' {
       'shared.official-links': SharedOfficialLinks;
       'shared.link': SharedLink;
       'shared.footer-column': SharedFooterColumn;
-      'home-page.banner': HomePageBanner;
       'global.navigation': GlobalNavigation;
       'global.footer': GlobalFooter;
+      'home-page.banner': HomePageBanner;
       'blocks.cta': BlocksCta;
     }
   }

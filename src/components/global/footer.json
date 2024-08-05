@@ -9,7 +9,7 @@
     "label": {
       "type": "string"
     },
-    "social": {
+    "socials": {
       "type": "component",
       "repeatable": true,
       "component": "shared.social-network"
