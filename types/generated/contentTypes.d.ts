@@ -1156,6 +1156,37 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
   };
 }
 
+export interface ApiGlobalGlobal extends Schema.SingleType {
+  collectionName: 'globals';
+  info: {
+    singularName: 'global';
+    pluralName: 'globals';
+    displayName: 'Global';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    footer: Attribute.Component<'global.footer'>;
+    header: Attribute.Component<'global.navigation', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::global.global',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::global.global',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNewsCategoryNewsCategory extends Schema.CollectionType {
   collectionName: 'news_categories';
   info: {
@@ -1548,6 +1579,7 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
       'api::community.community': ApiCommunityCommunity;
+      'api::global.global': ApiGlobalGlobal;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;
       'api::platform.platform': ApiPlatformPlatform;

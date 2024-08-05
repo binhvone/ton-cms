@@ -18,9 +18,11 @@ export interface SharedSocialNetwork extends Schema.Component {
   collectionName: 'components_shared_social_networks';
   info: {
     displayName: 'SocialNetwork';
+    description: '';
   };
   attributes: {
     url: Attribute.String;
+    Logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -104,10 +106,11 @@ export interface GlobalFooter extends Schema.Component {
   collectionName: 'components_global_footers';
   info: {
     displayName: 'Footer';
+    description: '';
   };
   attributes: {
     label: Attribute.String;
-    footerColumns: Attribute.Component<'shared.footer-column', true>;
+    social: Attribute.Component<'shared.social-network', true>;
   };
 }
 

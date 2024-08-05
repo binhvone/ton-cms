@@ -1,12 +1,23 @@
 {
   "collectionName": "components_shared_social_networks",
   "info": {
-    "displayName": "SocialNetwork"
+    "displayName": "SocialNetwork",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "url": {
       "type": "string"
+    },
+    "Logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
