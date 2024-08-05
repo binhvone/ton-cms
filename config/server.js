@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  url: "http://localhost:1337",
+  url: "https://whimsical-renewal-be49f9c7e3.strapiapp.com",
 
   proxy: env.bool('IS_PROXIED', true),
   cron: {
