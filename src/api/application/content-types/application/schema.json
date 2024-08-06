@@ -107,15 +107,7 @@
       },
       "type": "string"
     },
-    "languages": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
-    "Telegram": {
+    "socialNetworks": {
       "type": "component",
       "repeatable": true,
       "pluginOptions": {
@@ -123,23 +115,21 @@
           "localized": true
         }
       },
-      "component": "shared.link"
+      "component": "shared.social-network"
     },
-    "officialLinks": {
-      "displayName": "officialLinks",
-      "type": "component",
-      "repeatable": true,
+    "updatedInformation": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.official-links"
+      "type": "blocks"
     },
-    "platforms": {
+    "blogs": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::platform.platform"
+      "target": "api::blog.blog",
+      "mappedBy": "application"
     }
   }
 }

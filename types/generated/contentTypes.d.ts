@@ -916,28 +916,22 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    languages: Attribute.Text &
+    socialNetworks: Attribute.Component<'shared.social-network', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Telegram: Attribute.Component<'shared.link', true> &
+    updatedInformation: Attribute.Blocks &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    officialLinks: Attribute.Component<'shared.official-links', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    platforms: Attribute.Relation<
+    blogs: Attribute.Relation<
       'api::application.application',
       'oneToMany',
-      'api::platform.platform'
+      'api::blog.blog'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1017,6 +1011,11 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'api::blog.blog',
       'oneToMany',
       'api::tag.tag'
+    >;
+    application: Attribute.Relation<
+      'api::blog.blog',
+      'manyToOne',
+      'api::application.application'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
