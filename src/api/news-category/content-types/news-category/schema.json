@@ -31,6 +31,14 @@
       "relation": "oneToMany",
       "target": "api::blog.blog",
       "mappedBy": "newsCategory"
+    },
+    "href": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
