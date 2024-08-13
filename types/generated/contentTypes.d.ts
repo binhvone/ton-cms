@@ -781,6 +781,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::review.review'
     >;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    position: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
