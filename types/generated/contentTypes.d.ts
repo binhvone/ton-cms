@@ -804,15 +804,16 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
     singularName: 'about-page';
     pluralName: 'about-pages';
     displayName: 'AboutPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     header: Attribute.Component<'shared.header'>;
-    Team: Attribute.Component<'shared.team'>;
+    team: Attribute.Component<'shared.team'>;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Contact: Attribute.Component<'shared.contact'>;
+    contact: Attribute.Component<'shared.contact'>;
     furtherInformation: Attribute.Component<'shared.further-information', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1328,36 +1329,6 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
-export interface ApiPlatformPlatform extends Schema.CollectionType {
-  collectionName: 'platforms';
-  info: {
-    singularName: 'platform';
-    pluralName: 'platforms';
-    displayName: 'Platform';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.Enumeration<['Web', 'Android', 'IOS', 'Telegram']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::platform.platform',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::platform.platform',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiRatingRating extends Schema.CollectionType {
   collectionName: 'ratings';
   info: {
@@ -1617,7 +1588,6 @@ declare module '@strapi/types' {
       'api::global.global': ApiGlobalGlobal;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;
-      'api::platform.platform': ApiPlatformPlatform;
       'api::rating.rating': ApiRatingRating;
       'api::review.review': ApiReviewReview;
       'api::statistic.statistic': ApiStatisticStatistic;

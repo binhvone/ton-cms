@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-page",
     "pluralName": "about-pages",
-    "displayName": "AboutPage"
+    "displayName": "AboutPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,23 +17,24 @@
       "repeatable": false,
       "component": "shared.header"
     },
-    "Team": {
+    "team": {
       "displayName": "team",
       "type": "component",
       "repeatable": false,
       "component": "shared.team"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "Contact": {
+    "contact": {
       "displayName": "contact",
       "type": "component",
       "repeatable": false,

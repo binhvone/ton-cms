@@ -1,5 +1,40 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface HomePageBanner extends Schema.Component {
+  collectionName: 'components_home_page_banners';
+  info: {
+    displayName: 'Banner';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.Component<'shared.link'>;
+  };
+}
+
+export interface GlobalNavigation extends Schema.Component {
+  collectionName: 'components_global_navigations';
+  info: {
+    displayName: 'Navigation';
+  };
+  attributes: {
+    links: Attribute.Component<'shared.link', true>;
+  };
+}
+
+export interface GlobalFooter extends Schema.Component {
+  collectionName: 'components_global_footers';
+  info: {
+    displayName: 'Footer';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    socials: Attribute.Component<'shared.social-network', true>;
+  };
+}
+
 export interface SharedTest extends Schema.Component {
   collectionName: 'components_shared_tests';
   info: {
@@ -143,41 +178,6 @@ export interface SharedContactInformation extends Schema.Component {
   };
 }
 
-export interface HomePageBanner extends Schema.Component {
-  collectionName: 'components_home_page_banners';
-  info: {
-    displayName: 'Banner';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Attribute.Component<'shared.link'>;
-  };
-}
-
-export interface GlobalNavigation extends Schema.Component {
-  collectionName: 'components_global_navigations';
-  info: {
-    displayName: 'Navigation';
-  };
-  attributes: {
-    links: Attribute.Component<'shared.link', true>;
-  };
-}
-
-export interface GlobalFooter extends Schema.Component {
-  collectionName: 'components_global_footers';
-  info: {
-    displayName: 'Footer';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    socials: Attribute.Component<'shared.social-network', true>;
-  };
-}
-
 export interface BlocksCta extends Schema.Component {
   collectionName: 'components_blocks_ctas';
   info: {
@@ -194,6 +194,9 @@ export interface BlocksCta extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'home-page.banner': HomePageBanner;
+      'global.navigation': GlobalNavigation;
+      'global.footer': GlobalFooter;
       'shared.test': SharedTest;
       'shared.team': SharedTeam;
       'shared.social-network': SharedSocialNetwork;
@@ -205,9 +208,6 @@ declare module '@strapi/types' {
       'shared.footer-column': SharedFooterColumn;
       'shared.contact': SharedContact;
       'shared.contact-information': SharedContactInformation;
-      'home-page.banner': HomePageBanner;
-      'global.navigation': GlobalNavigation;
-      'global.footer': GlobalFooter;
       'blocks.cta': BlocksCta;
     }
   }
