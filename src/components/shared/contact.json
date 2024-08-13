@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_contacts",
+  "info": {
+    "displayName": "contact"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.header"
+    },
+    "contactInformation": {
+      "displayName": "contactInformation",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.contact-information"
+    },
+    "socialNetworks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.social-network"
+    }
+  }
+}

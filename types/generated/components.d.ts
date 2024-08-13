@@ -14,6 +14,21 @@ export interface SharedTest extends Schema.Component {
   };
 }
 
+export interface SharedTeam extends Schema.Component {
+  collectionName: 'components_shared_teams';
+  info: {
+    displayName: 'team';
+  };
+  attributes: {
+    header: Attribute.Component<'shared.header'>;
+    members: Attribute.Relation<
+      'shared.team',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface SharedSocialNetwork extends Schema.Component {
   collectionName: 'components_shared_social_networks';
   info: {
@@ -67,6 +82,30 @@ export interface SharedLink extends Schema.Component {
   };
 }
 
+export interface SharedHeader extends Schema.Component {
+  collectionName: 'components_shared_headers';
+  info: {
+    displayName: 'Header';
+  };
+  attributes: {
+    title: Attribute.String;
+    subTitle: Attribute.Text;
+  };
+}
+
+export interface SharedFurtherInformation extends Schema.Component {
+  collectionName: 'components_shared_further_informations';
+  info: {
+    displayName: 'furtherInformation';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    href: Attribute.String;
+  };
+}
+
 export interface SharedFooterColumn extends Schema.Component {
   collectionName: 'components_shared_footer_columns';
   info: {
@@ -80,6 +119,30 @@ export interface SharedFooterColumn extends Schema.Component {
   };
 }
 
+export interface SharedContact extends Schema.Component {
+  collectionName: 'components_shared_contacts';
+  info: {
+    displayName: 'contact';
+  };
+  attributes: {
+    header: Attribute.Component<'shared.header'>;
+    contactInformation: Attribute.Component<'shared.contact-information', true>;
+    socialNetworks: Attribute.Component<'shared.social-network', true>;
+  };
+}
+
+export interface SharedContactInformation extends Schema.Component {
+  collectionName: 'components_shared_contact_informations';
+  info: {
+    displayName: 'contactInformation';
+  };
+  attributes: {
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Attribute.String;
+    content: Attribute.Text;
+  };
+}
+
 export interface HomePageBanner extends Schema.Component {
   collectionName: 'components_home_page_banners';
   info: {
@@ -90,19 +153,6 @@ export interface HomePageBanner extends Schema.Component {
     description: Attribute.Text;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     link: Attribute.Component<'shared.link'>;
-  };
-}
-
-export interface BlocksCta extends Schema.Component {
-  collectionName: 'components_blocks_ctas';
-  info: {
-    displayName: 'Cta';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    subTitle: Attribute.Text;
-    buttons: Attribute.Component<'shared.test', true>;
   };
 }
 
@@ -128,19 +178,37 @@ export interface GlobalFooter extends Schema.Component {
   };
 }
 
+export interface BlocksCta extends Schema.Component {
+  collectionName: 'components_blocks_ctas';
+  info: {
+    displayName: 'Cta';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    subTitle: Attribute.Text;
+    buttons: Attribute.Component<'shared.test', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'shared.test': SharedTest;
+      'shared.team': SharedTeam;
       'shared.social-network': SharedSocialNetwork;
       'shared.seo': SharedSeo;
       'shared.official-links': SharedOfficialLinks;
       'shared.link': SharedLink;
+      'shared.header': SharedHeader;
+      'shared.further-information': SharedFurtherInformation;
       'shared.footer-column': SharedFooterColumn;
+      'shared.contact': SharedContact;
+      'shared.contact-information': SharedContactInformation;
       'home-page.banner': HomePageBanner;
-      'blocks.cta': BlocksCta;
       'global.navigation': GlobalNavigation;
       'global.footer': GlobalFooter;
+      'blocks.cta': BlocksCta;
     }
   }
 }

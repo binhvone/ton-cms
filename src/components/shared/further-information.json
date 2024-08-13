@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_further_informations",
+  "info": {
+    "displayName": "furtherInformation"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

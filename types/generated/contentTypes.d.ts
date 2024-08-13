@@ -798,6 +798,40 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Schema.SingleType {
+  collectionName: 'about_pages';
+  info: {
+    singularName: 'about-page';
+    pluralName: 'about-pages';
+    displayName: 'AboutPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    header: Attribute.Component<'shared.header'>;
+    Team: Attribute.Component<'shared.team'>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Contact: Attribute.Component<'shared.contact'>;
+    furtherInformation: Attribute.Component<'shared.further-information', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
   collectionName: 'advertisements';
   info: {
@@ -1062,12 +1096,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     applications: Attribute.Relation<
       'api::category.category',
       'oneToMany',
@@ -1078,12 +1106,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::application.application'
     >;
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     href: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1586,6 +1608,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::advertisement.advertisement': ApiAdvertisementAdvertisement;
       'api::application.application': ApiApplicationApplication;
       'api::blog.blog': ApiBlogBlog;

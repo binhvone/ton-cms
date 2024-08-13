@@ -34,22 +34,6 @@
         }
       }
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "applications": {
       "type": "relation",
       "relation": "oneToMany",
@@ -60,22 +44,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::application.application"
-    },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     },
     "href": {
       "pluginOptions": {
