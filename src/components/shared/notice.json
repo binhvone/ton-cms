@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_notices",
+  "info": {
+    "displayName": "notice"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}

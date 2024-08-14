@@ -69,6 +69,17 @@ export interface SharedOfficialLinks extends Schema.Component {
   };
 }
 
+export interface SharedNotice extends Schema.Component {
+  collectionName: 'components_shared_notices';
+  info: {
+    displayName: 'notice';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.Text;
+  };
+}
+
 export interface SharedLink extends Schema.Component {
   collectionName: 'components_shared_links';
   info: {
@@ -97,12 +108,17 @@ export interface SharedFurtherInformation extends Schema.Component {
   collectionName: 'components_shared_further_informations';
   info: {
     displayName: 'furtherInformation';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     href: Attribute.String;
+    firstContent: Attribute.Blocks;
+    secondContent: Attribute.Blocks;
+    notice: Attribute.Component<'shared.notice'>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -199,6 +215,7 @@ declare module '@strapi/types' {
       'shared.social-network': SharedSocialNetwork;
       'shared.seo': SharedSeo;
       'shared.official-links': SharedOfficialLinks;
+      'shared.notice': SharedNotice;
       'shared.link': SharedLink;
       'shared.header': SharedHeader;
       'shared.further-information': SharedFurtherInformation;
