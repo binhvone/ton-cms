@@ -119,6 +119,7 @@ export interface SharedFurtherInformation extends Schema.Component {
     secondContent: Attribute.Blocks;
     notice: Attribute.Component<'shared.notice'>;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    color: Attribute.String;
   };
 }
 
